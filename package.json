@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "https://olegrosinskyi.github.io/goit-js-hw-08/src/", 
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-08/src"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-08/"
   },
   "repository": {
     "type": "git",
