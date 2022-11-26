@@ -2,9 +2,9 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://github.com/OlegRosinskyi/goit-js-hw-08", 
+  "homepage": "https://olegrosinskyi.github.io/goit-js-hw-08/src/", 
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-08/"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-08/src"
   },
   "repository": {
     "type": "git",
