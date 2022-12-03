@@ -1,5 +1,5 @@
 import { save, load } from './storage';
-var throttle = require('lodash.throttle');
+import throttle from 'lodash.throttle';
 const form = document.querySelector('.feedback-form');
 console.log(form);
 
@@ -44,14 +44,14 @@ const onInput = event => {
       formData.message = message.value;
     }
   }
-  throttle(() => {
+  _.throttle(() => {
     const dataForm = JSON.stringify(formData);
-    localStorage.setItem(LOCALSTORAGE_KEY, dataForm), [(wait = 5000)];
-  }, [(options = {})]);
-  const dataForm = JSON.stringify(formData);
-  localStorage.setItem(LOCALSTORAGE_KEY, dataForm);
-  console.log(localStorage.getItem(LOCALSTORAGE_KEY));
-  console.log(formData);
+    localStorage.setItem(LOCALSTORAGE_KEY, dataForm);
+  }, 500);
+  //const dataForm = JSON.stringify(formData);
+  //localStorage.setItem(LOCALSTORAGE_KEY, dataForm);
+  //console.log(localStorage.getItem(LOCALSTORAGE_KEY));
+  //console.log(formData);
 };
 
 form.addEventListener('input', onInput);
