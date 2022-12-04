@@ -57,7 +57,7 @@
 112C:\PrpjectLessonJS\goit-js-hw-08\node_modules\parcel-reporter-clean-dist\test\fixtures\packageV4\files\file1.txt133139042271383029 0
 56C:\PrpjectLessonJS\goit-js-hw-08\node_modules\terser\lib133146356795778474 1
 44C:\PrpjectLessonJS\goit-js-hw-08\.prettierrc133139013629925335 0
-37C:\PrpjectLessonJS\goit-js-hw-08\dist133146434774366991 1
+37C:\PrpjectLessonJS\goit-js-hw-08\dist133146444738397581 1
 74C:\PrpjectLessonJS\goit-js-hw-08\node_modules\css-tree\lib\syntax\function133146356766107764 1
 68C:\PrpjectLessonJS\goit-js-hw-08\node_modules\immutable\package.json133139042265160436 0
 97C:\PrpjectLessonJS\goit-js-hw-08\node_modules\@jridgewell\gen-mapping\dist\gen-mapping.umd.js.map133139042261799804 0
@@ -212,7 +212,7 @@
 58C:\PrpjectLessonJS\goit-js-hw-08\node_modules\sass\sass.js133139042274147718 0
 90C:\PrpjectLessonJS\goit-js-hw-08\node_modules\@swc\helpers\lib\_iterable_to_array_limit.js133139042273478972 0
 76C:\PrpjectLessonJS\goit-js-hw-08\node_modules\lmdb-win32-x64\node.abi83.node133139042268315957 0
-54C:\PrpjectLessonJS\goit-js-hw-08\src\js\03-feedback.js133146434767777081 0
+54C:\PrpjectLessonJS\goit-js-hw-08\src\js\03-feedback.js133146444489723183 0
 71C:\PrpjectLessonJS\goit-js-hw-08\node_modules\@parcel\core\lib\types.js133139042277994323 0
 56C:\PrpjectLessonJS\goit-js-hw-08\src\js\gallery-items.js133139014830583513 0
 82C:\PrpjectLessonJS\goit-js-hw-08\node_modules\simplelightbox\demo\img\thumb\05.jpg133139589422550673 0
@@ -5557,8 +5557,8 @@
 61C:\PrpjectLessonJS\goit-js-hw-08\dist\01-gallery.7d68834f.css133146434773851573 0
 65C:\PrpjectLessonJS\goit-js-hw-08\dist\01-gallery.7d68834f.css.map133146434774012506 0
 62C:\PrpjectLessonJS\goit-js-hw-08\dist\02-video.a74b541c.js.map133146434774169070 0
-61C:\PrpjectLessonJS\goit-js-hw-08\dist\03-feedback.5440b4f4.js133146434773856220 0
-65C:\PrpjectLessonJS\goit-js-hw-08\dist\03-feedback.5440b4f4.js.map133146434774012506 0
+61C:\PrpjectLessonJS\goit-js-hw-08\dist\03-feedback.5440b4f4.js133146444738397581 0
+65C:\PrpjectLessonJS\goit-js-hw-08\dist\03-feedback.5440b4f4.js.map133146444738397581 0
 48C:\PrpjectLessonJS\goit-js-hw-08\dist\index.html133146434774259258 0
 65C:\PrpjectLessonJS\goit-js-hw-08\assets\actions-config-step-1.png133139013631179225 0
 56C:\PrpjectLessonJS\goit-js-hw-08\assets\how-it-works.png133139013631340093 0

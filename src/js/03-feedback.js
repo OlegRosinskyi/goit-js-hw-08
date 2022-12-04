@@ -71,7 +71,7 @@ const onSubmit = event => {
   formData.emailV = '';
   formData.messageV = '';
   if (input.hasAttribute(value)) {
-    input.removeAttribute(value);
+    input.setAttribute(value, '');
   }
   if (textareaInput.textContent !== '') {
     textareaInput.textContent = '';
