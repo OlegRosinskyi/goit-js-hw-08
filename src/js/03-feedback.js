@@ -9,18 +9,21 @@ console.log(input);
 const textareaInput = document.querySelector('.feedback-form [name="message"]');
 
 const formData = {
-  email: (email = ''),
-  message: (message = ''),
+  emailV: (emailV = ''),
+  messageV: (messageV = ''),
 };
-console.log(formData);
+
 function noSubmitInsertEmailMessage() {
   //console.log(localStorage.getItem(LOCALSTORAGE_KEY));
-  const dataForm = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY) || '');
-  //console.log(dataForm);
-  //console.log(dataForm.email);
+  console.log(localStorage.getItem(LOCALSTORAGE_KEY) !== '');
+  if (localStorage.getItem(LOCALSTORAGE_KEY) !== '') {
+    const dataForm = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)); //JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY) || '');
+    //console.log(dataForm);
+    //console.log(dataForm.email);
 
-  input.setAttribute('value', dataForm.email);
-  textareaInput.textContent = dataForm.message;
+    input.setAttribute('value', dataForm.emailV);
+    textareaInput.textContent = dataForm.messageV;
+  }
 }
 noSubmitInsertEmailMessage();
 console.log(formData);
@@ -39,9 +42,9 @@ const onInput = event => {
     } = event.currentTarget;
 
     if (event.target.nodeName === 'INPUT') {
-      formData.email = email.value;
+      formData.emailV = email.value;
     } else {
-      formData.message = message.value;
+      formData.messageV = message.value;
     }
   }
 
@@ -62,12 +65,17 @@ const onSubmit = event => {
   event.preventDefault();
 
   console.log(formData);
-  form.reset();
+
   event.currentTarget.reset();
-  formData.email = email.value;
-  formData.message = message.value;
-  input.setAttribute('value', '');
-  textareaInput.textContent = '';
+  formData.emailV = '';
+  formData.messageV = '';
+  if (input.getAttribute(value) !== '') {
+    input.removeAttribute(value);
+  }
+  if (textareaInput.textContent !== '') {
+    textareaInput.textContent = '';
+  }
+  form.reset();
   console.log(formData);
 };
 form.addEventListener('submit', onSubmit);
