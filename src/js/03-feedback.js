@@ -44,17 +44,18 @@ const onInput = event => {
       formData.message = message.value;
     }
   }
-  _.throttle(() => {
-    const dataForm = JSON.stringify(formData);
-    localStorage.setItem(LOCALSTORAGE_KEY, dataForm);
-  }, 500);
+
+  const dataForm = JSON.stringify(formData);
+  localStorage.setItem(LOCALSTORAGE_KEY, dataForm);
+
   //const dataForm = JSON.stringify(formData);
   //localStorage.setItem(LOCALSTORAGE_KEY, dataForm);
   //console.log(localStorage.getItem(LOCALSTORAGE_KEY));
-  //console.log(formData);
+  console.log(formData);
 };
 
-form.addEventListener('input', onInput);
+form.addEventListener('input', throttle(onInput, 500));
+//throttle(onInput, 500);
 //---------------------------------------------------------------------------------
 
 const onSubmit = event => {
