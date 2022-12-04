@@ -1,9 +1,9 @@
 console.log('played the video!');
 //const Vimeo = require('@vimeo/player');
-//var throttle = require('lodash.throttle');
+var throttle = require('lodash.throttle');
 //import { save, load } from './storage';
 import Player from '@vimeo/player';
-import throttle from 'lodash.throttle';
+//import throttle from 'lodash.throttle';
 const key = 'videoplayer-current-time';
 const value = 'TimeRanges';
 
@@ -40,22 +40,23 @@ player.on('play', function () {
   }
 });
 //-----------------------------------------------------------
-_.throttle(() => {
-  player.on('timeupdate', function () {
-    console.log('played the video!');
+function timeRepeat() {
+  console.log('played the video!');
+  player
+    .getCurrentTime()
+    .then(value => {
+      localStorage.setItem(key, value);
+      console.log(value);
+      // seconds = the current playback position
+    })
+    .catch(() => {
+      console.log('Error');
+    });
+}
 
-    player
-      .getCurrentTime()
-      .then(value => {
-        localStorage.setItem(key, value);
-        console.log(value);
-        // seconds = the current playback position
-      })
-      .catch(() => {
-        console.log('Error');
-      });
-  });
-}, 1000);
+player.on('timeupdate', () => {
+  throttle(timeRepeat(), 1000);
+});
 
 player.getVideoTitle().then(function (title) {
   console.log('title:', title);

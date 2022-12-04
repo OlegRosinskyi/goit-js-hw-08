@@ -1,12 +1,13 @@
 import { save, load } from './storage';
-import throttle from 'lodash.throttle';
+var throttle = require('lodash.throttle');
+//import throttle from 'lodash.throttle';
 const form = document.querySelector('.feedback-form');
 console.log(form);
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
-const input = document.querySelector('.feedback-form [name="email"]');
-console.log(input);
-const textareaInput = document.querySelector('.feedback-form [name="message"]');
+//const inputEl = document.querySelector('.feedback-form [name="email"]');
+//console.log(inputEl);
+//const textareaInput = document.querySelector('.feedback-form [name="message"]');
 
 const formData = {
   email: (email = ''),
@@ -25,6 +26,7 @@ function noSubmitInsertEmailMessage() {
 noSubmitInsertEmailMessage();
 console.log(formData);
 
+//const onInput = event => {
 const onInput = event => {
   event.preventDefault();
 
@@ -44,17 +46,16 @@ const onInput = event => {
       formData.message = message.value;
     }
   }
-  _.throttle(() => {
-    const dataForm = JSON.stringify(formData);
-    localStorage.setItem(LOCALSTORAGE_KEY, dataForm);
-  }, 500);
+
+  const dataForm = JSON.stringify(formData);
+  localStorage.setItem(LOCALSTORAGE_KEY, dataForm);
   //const dataForm = JSON.stringify(formData);
   //localStorage.setItem(LOCALSTORAGE_KEY, dataForm);
   //console.log(localStorage.getItem(LOCALSTORAGE_KEY));
-  //console.log(formData);
+  console.log(formData);
 };
 
-form.addEventListener('input', onInput);
+form.addEventListener('input', () => throttle(onInput, 500));
 //---------------------------------------------------------------------------------
 
 const onSubmit = event => {
