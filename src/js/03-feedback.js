@@ -2,8 +2,9 @@ import { save, load } from './storage';
 import throttle from 'lodash.throttle';
 const form = document.querySelector('.feedback-form');
 console.log(form);
+const key = 'feedback-form-state';
+const value = 'TimeRanges';
 
-const LOCALSTORAGE_KEY = 'feedback-form-state';
 const input = document.querySelector('.feedback-form [name="email"]');
 console.log(input);
 const textareaInput = document.querySelector('.feedback-form [name="message"]');
@@ -15,9 +16,9 @@ const formData = {
 
 function noSubmitInsertEmailMessage() {
   //console.log(localStorage.getItem(LOCALSTORAGE_KEY));
-  console.log(localStorage.getItem(LOCALSTORAGE_KEY) !== '');
-  if (localStorage.getItem(LOCALSTORAGE_KEY) !== '') {
-    const dataForm = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)); //JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY) || '');
+  console.log(localStorage.getItem(key) !== '');
+  if (localStorage.getItem(key) !== '') {
+    const dataForm = JSON.parse(localStorage.getItem(key)); //JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY) || '');
     //console.log(dataForm);
     //console.log(dataForm.email);
 
@@ -49,7 +50,7 @@ const onInput = event => {
   }
 
   const dataForm = JSON.stringify(formData);
-  localStorage.setItem(LOCALSTORAGE_KEY, dataForm);
+  localStorage.setItem(key, dataForm);
 
   //const dataForm = JSON.stringify(formData);
   //localStorage.setItem(LOCALSTORAGE_KEY, dataForm);
@@ -62,14 +63,14 @@ form.addEventListener('input', throttle(onInput, 500));
 //---------------------------------------------------------------------------------
 
 const onSubmit = event => {
-  event.preventDefault();
+  //event.preventDefault();
 
   console.log(formData);
 
   event.currentTarget.reset();
   formData.emailV = '';
   formData.messageV = '';
-  if (input.getAttribute(value) !== '') {
+  if (input.hasAttribute(value)) {
     input.removeAttribute(value);
   }
   if (textareaInput.textContent !== '') {
