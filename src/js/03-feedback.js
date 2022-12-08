@@ -1,23 +1,24 @@
 //import { save, load } from './storage';
 import throttle from 'lodash.throttle';
 const form = document.querySelector('.feedback-form');
-console.log(form);
+//console.log(form);
 const key = 'feedback-form-state';
 const value = 'TimeRanges';
 
 const input = document.querySelector('.feedback-form [name="email"]');
-console.log(input);
+//console.log(input);
 const textareaInput = document.querySelector('.feedback-form [name="message"]');
 let emailV = '';
 let messageV = '';
 let formData = { email: emailV, message: messageV };
+//console.log(formData);
 
 function noSubmitInsertEmailMessage() {
-  // console.log(localStorage.getItem(key));
-  console.log(localStorage.getItem(key) !== null);
+  //console.log(formData);
+  // console.log(localStorage.getItem(key) !== null);
   if (localStorage.getItem(key) !== null) {
     const DataForm = JSON.parse(localStorage.getItem(key));
-    console.log('Restart', DataForm);
+    //console.log('Restart', DataForm);
 
     input.setAttribute('value', DataForm.email);
     textareaInput.textContent = DataForm.message;
@@ -50,7 +51,7 @@ const onInput = event => {
     formData.message = message.value;
   }
 
-  console.log('Input2', formData);
+  //console.log('Input2', formData);
   const dataForm = JSON.stringify(formData);
   localStorage.setItem(key, dataForm);
 };
@@ -60,19 +61,19 @@ form.addEventListener('input', throttle(onInput, 100));
 //---------------------------------------------------------------------------------
 
 const onSubmit = event => {
-  //event.preventDefault();
+  event.preventDefault();
+  const formData = JSON.parse(localStorage.getItem(key));
   console.log('Submit', formData);
 
   event.currentTarget.reset();
 
-  if (input.hasAttribute(value)) {
-    input.elem.removeAttribute(value);
-  }
-  if (textareaInput.textContent !== '') {
-    textareaInput.textContent = '';
-  }
+  input.setAttribute('value', '');
+  textareaInput.textContent = '';
+
   localStorage.removeItem(key);
   event.currentTarget.reset();
   form.reset();
 };
 form.addEventListener('submit', onSubmit);
+
+//function OutConsol() {
