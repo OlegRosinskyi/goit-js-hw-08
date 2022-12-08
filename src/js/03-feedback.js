@@ -13,7 +13,7 @@ let messageV = '';
 let formData = { email: emailV, message: messageV };
 
 function noSubmitInsertEmailMessage() {
-  console.log(localStorage.getItem(key));
+  // console.log(localStorage.getItem(key));
   console.log(localStorage.getItem(key) !== null);
   if (localStorage.getItem(key) !== null) {
     const DataForm = JSON.parse(localStorage.getItem(key));
@@ -60,15 +60,13 @@ form.addEventListener('input', throttle(onInput, 100));
 //---------------------------------------------------------------------------------
 
 const onSubmit = event => {
-  event.preventDefault();
+  //event.preventDefault();
   console.log('Submit', formData);
 
   event.currentTarget.reset();
 
-  //emailV = '';
-  // messageV = '';
   if (input.hasAttribute(value)) {
-    input.setAttribute(value, '');
+    input.elem.removeAttribute(value);
   }
   if (textareaInput.textContent !== '') {
     textareaInput.textContent = '';
