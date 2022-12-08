@@ -8,21 +8,19 @@ const value = 'TimeRanges';
 const input = document.querySelector('.feedback-form [name="email"]');
 console.log(input);
 const textareaInput = document.querySelector('.feedback-form [name="message"]');
-
-let formData = {};
 let emailV = '';
 let messageV = '';
+let formData = { email: emailV, message: messageV };
 
 function noSubmitInsertEmailMessage() {
-  //console.log(localStorage.getItem(LOCALSTORAGE_KEY));
-  console.log(localStorage.getItem(key) !== '');
-  if (localStorage.getItem(key) !== '') {
-    const formData = JSON.parse(localStorage.getItem(key));
-    //console.log(dataForm);
-    //console.log(dataForm.email);
+  console.log(localStorage.getItem(key));
+  console.log(localStorage.getItem(key) !== null);
+  if (localStorage.getItem(key) !== null) {
+    const DataForm = JSON.parse(localStorage.getItem(key));
+    console.log('Restart', DataForm);
 
-    input.setAttribute('value', formData.email);
-    textareaInput.textContent = formData.message;
+    input.setAttribute('value', DataForm.email);
+    textareaInput.textContent = DataForm.message;
   }
 }
 noSubmitInsertEmailMessage();
@@ -39,16 +37,20 @@ const onInput = event => {
     const {
       elements: { email, message },
     } = event.currentTarget;
-
-    if (event.target.nodeName === 'INPUT') {
-      emailV = email.value;
-    } else {
-      messageV = message.value;
-    }
+    // formData = JSON.parse(localStorage.getItem(key));
+    // console.log('Input1', formData);
+    // if (event.target.nodeName === 'INPUT') {
+    //   console.log('EMAIL I', email.value || formData.email);
+    //    emailV = email.value || formData.email;
+    // } else {
+    //   messageV = message.value || formData.message;
+    //   console.log('MESSAGE I', message.value || formData.message);
+    // }
+    formData.email = email.value;
+    formData.message = message.value;
   }
-  formData.email = emailV;
-  formData.message = messageV;
 
+  console.log('Input2', formData);
   const dataForm = JSON.stringify(formData);
   localStorage.setItem(key, dataForm);
 };
@@ -59,18 +61,19 @@ form.addEventListener('input', throttle(onInput, 100));
 
 const onSubmit = event => {
   event.preventDefault();
-  //console.log(formData);
+  console.log('Submit', formData);
 
   event.currentTarget.reset();
 
-  emailV = '';
-  messageV = '';
+  //emailV = '';
+  // messageV = '';
   if (input.hasAttribute(value)) {
     input.setAttribute(value, '');
   }
   if (textareaInput.textContent !== '') {
     textareaInput.textContent = '';
   }
+  localStorage.removeItem(key);
   event.currentTarget.reset();
   form.reset();
 };
