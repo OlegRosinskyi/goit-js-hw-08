@@ -8,7 +8,7 @@ const key = 'videoplayer-current-time';
 const value = 'TimeRanges';
 
 const LOCALSTORAGE_KEY = 'videoplayer-current-time';
-console.log(Player);
+//console.log(Player);
 const iframe = document.querySelector('iframe');
 console.log(iframe);
 
@@ -54,7 +54,9 @@ function timeRepeat() {
     });
 }
 
-player.on('timeupdate', () => throttle(timeRepeat(), 1000));
+const funct = () => throttle(timeRepeat(), 1000);
+
+player.on('timeupdate', funct);
 
 player.getVideoTitle().then(function (title) {
   console.log('title:', title);

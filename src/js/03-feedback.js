@@ -15,7 +15,7 @@ let formData = { email: emailV, message: messageV };
 
 function noSubmitInsertEmailMessage() {
   //console.log(formData);
-  // console.log(localStorage.getItem(key) !== null);
+
   if (localStorage.getItem(key) !== null) {
     const DataForm = JSON.parse(localStorage.getItem(key));
     //console.log('Restart', DataForm);
@@ -38,15 +38,7 @@ const onInput = event => {
     const {
       elements: { email, message },
     } = event.currentTarget;
-    // formData = JSON.parse(localStorage.getItem(key));
-    // console.log('Input1', formData);
-    // if (event.target.nodeName === 'INPUT') {
-    //   console.log('EMAIL I', email.value || formData.email);
-    //    emailV = email.value || formData.email;
-    // } else {
-    //   messageV = message.value || formData.message;
-    //   console.log('MESSAGE I', message.value || formData.message);
-    // }
+
     formData.email = email.value;
     formData.message = message.value;
   }
@@ -56,23 +48,28 @@ const onInput = event => {
   localStorage.setItem(key, dataForm);
 };
 
-form.addEventListener('input', throttle(onInput, 100));
+form.addEventListener('input', throttle(onInput, 10));
 //throttle(onInput, 500);
 //---------------------------------------------------------------------------------
 
 const onSubmit = event => {
   event.preventDefault();
   const formData = JSON.parse(localStorage.getItem(key));
-  console.log('Submit', formData);
 
-  event.currentTarget.reset();
+  if (formData.email === '' || formData.message === '') {
+    return alert('Please fill in all the fields!');
+  } else {
+    console.log('Submit', formData);
 
-  input.setAttribute('value', '');
-  textareaInput.textContent = '';
+    event.currentTarget.reset();
 
-  localStorage.removeItem(key);
-  event.currentTarget.reset();
-  form.reset();
+    input.setAttribute('value', '');
+    textareaInput.textContent = '';
+
+    localStorage.removeItem(key);
+    event.currentTarget.reset();
+    form.reset();
+  }
 };
 form.addEventListener('submit', onSubmit);
 
