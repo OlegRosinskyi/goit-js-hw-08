@@ -17,7 +17,7 @@ const player = new Player(iframe);
 player.on('play', function () {
   console.log('Start played the video!');
   console.log(localStorage.getItem(key) !== '0');
-
+  console.log(localStorage.getItem(key));
   //----------------------------------------------------------
   if (localStorage.getItem(key) !== '0') {
     player
@@ -54,7 +54,7 @@ function timeRepeat() {
     });
 }
 
-const funct = () => throttle(timeRepeat(), 1000);
+const funct = () => throttle(timeRepeat(), 100);
 
 player.on('timeupdate', funct);
 

@@ -48,7 +48,7 @@ const onInput = event => {
   localStorage.setItem(key, dataForm);
 };
 
-form.addEventListener('input', throttle(onInput, 10));
+form.addEventListener('input', throttle(onInput, 1));
 //throttle(onInput, 500);
 //---------------------------------------------------------------------------------
 
